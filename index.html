@@ -9,6 +9,15 @@
       content="SiteProof helps small Ontario contractors keep inspections, toolbox talks, hazard reports, and training records organized and ready when proof is requested."
     />
     <link rel="stylesheet" href="style.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YM1XEEV5K8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-YM1XEEV5K8");
+    </script>
     <script>
       (function (c, l, a, r, i, t, y) {
         c[a] =
@@ -34,7 +43,7 @@
           </div>
         </div>
         <div class="mobile-header-actions">
-          <a class="mobile-pricing-link" href="#pricing">Pricing</a>
+          <a class="mobile-pricing-link" href="#pricing" data-analytics-event="nav_click" data-analytics-label="mobile_pricing_link">Pricing</a>
           <button
             class="mobile-menu-button"
             type="button"
@@ -48,25 +57,25 @@
           </button>
         </div>
         <nav class="nav">
-          <a href="#use-cases">Use cases</a>
-          <a href="#features">Features</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">FAQ</a>
-          <a class="button" href="#pricing">Pricing &amp; free trial</a>
+          <a href="#use-cases" data-analytics-event="nav_click" data-analytics-label="desktop_use_cases">Use cases</a>
+          <a href="#features" data-analytics-event="nav_click" data-analytics-label="desktop_features">Features</a>
+          <a href="#pricing" data-analytics-event="nav_click" data-analytics-label="desktop_pricing">Pricing</a>
+          <a href="#faq" data-analytics-event="nav_click" data-analytics-label="desktop_faq">FAQ</a>
+          <a class="button" href="#pricing" data-analytics-event="cta_click" data-analytics-label="desktop_pricing_free_trial">Pricing &amp; free trial</a>
         </nav>
       </div>
       <div class="container">
         <div class="mobile-nav-panel" id="mobile-nav-panel" hidden>
-          <a href="#use-cases">Use cases</a>
-          <a href="#features">Features</a>
-          <a href="#faq">FAQ</a>
-          <a class="button" href="#pricing">Pricing &amp; free trial</a>
+          <a href="#use-cases" data-analytics-event="nav_click" data-analytics-label="mobile_menu_use_cases">Use cases</a>
+          <a href="#features" data-analytics-event="nav_click" data-analytics-label="mobile_menu_features">Features</a>
+          <a href="#faq" data-analytics-event="nav_click" data-analytics-label="mobile_menu_faq">FAQ</a>
+          <a class="button" href="#pricing" data-analytics-event="cta_click" data-analytics-label="mobile_menu_pricing_free_trial">Pricing &amp; free trial</a>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="hero-wrap">
+      <section class="hero-wrap" data-track-view="hero" data-track-view-name="hero_view">
         <div class="container hero-shell">
           <div class="hero-grid">
             <div class="hero-copy">
@@ -76,14 +85,14 @@
                 safety logs and generates client-ready compliance PDFs.
               </p>
               <div class="hero-actions">
-                <a class="button" href="#pricing">Start free for 30 days</a>
+                <a class="button" href="#pricing" data-analytics-event="cta_click" data-analytics-label="hero_start_free">Start free for 30 days</a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="features" class="section tiles-wrap">
+      <section id="features" class="section tiles-wrap" data-track-view="features" data-track-view-name="features_view">
         <div class="container tiles-shell">
           <div class="tiles-grid">
             <div class="tile">
@@ -129,7 +138,7 @@
         </div>
       </section>
 
-      <section id="use-cases" class="content">
+      <section id="use-cases" class="content" data-track-view="use_cases" data-track-view-name="use_cases_view">
         <div class="container">
           <div class="use-cases-layout">
             <div class="use-cases-copy">
@@ -160,13 +169,13 @@
               </div>
             </div>
 
-            <div class="use-cases-visual">
+            <div class="use-cases-visual" data-track-view="app_preview" data-track-view-name="app_preview_view">
               <img src="assets/mobileImages.png" alt="SiteProof mobile app screens" />
             </div>
           </div>
 
-          <div id="pricing" class="pricing">
-            <div class="pricing-card">
+          <div id="pricing" class="pricing" data-track-view="pricing" data-track-view-name="pricing_view">
+            <div class="pricing-card" data-track-view="pricing_starter" data-track-view-name="pricing_starter_view">
               <div class="eyebrow" style="color: var(--accent-dark); background: #fff2e5; border-color: #f3cfac;">Starter</div>
               <h3>Simple pricing for small crews</h3>
               <div class="price">CAD $79 <small>/ month</small></div>
@@ -178,10 +187,10 @@
                 <li>PDF export</li>
                 <li>Simple dashboard</li>
               </ul>
-              <a class="button" href="#pricing">Start free for 30 days</a>
+              <a class="button" href="#pricing" data-analytics-event="cta_click" data-analytics-label="pricing_starter_start_free">Start free for 30 days</a>
             </div>
 
-            <div class="pricing-card">
+            <div class="pricing-card" data-track-view="pricing_pro" data-track-view-name="pricing_pro_view">
               <div class="eyebrow" style="color: var(--accent-dark); background: #fff2e5; border-color: #f3cfac;">Pro</div>
               <h3>More room for growing teams</h3>
               <div class="price">CAD $149 <small>/ month</small></div>
@@ -193,37 +202,37 @@
                 <li>Fast PDF proof export</li>
                 <li>30-day free trial</li>
               </ul>
-              <a class="button" href="#pricing">Book a demo</a>
+              <a class="button" href="#pricing" data-analytics-event="cta_click" data-analytics-label="pricing_pro_book_demo">Book a demo</a>
             </div>
           </div>
 
-          <div id="faq" class="faq-list">
-            <details>
+          <div id="faq" class="faq-list" data-track-view="faq" data-track-view-name="faq_view">
+            <details data-analytics-event="faq_open" data-analytics-label="faq_ontario_contractors">
               <summary>Is this built for Ontario contractors?</summary>
               <p>Yes. SiteProof is designed for Ontario-first contractors and small field crews.</p>
             </details>
 
-            <details>
+            <details data-analytics-event="faq_open" data-analytics-label="faq_big_safety_team">
               <summary>Do I need a big safety team to use SiteProof?</summary>
               <p>No. It is made for small companies, owners, supervisors, and office admins.</p>
             </details>
 
-            <details>
+            <details data-analytics-event="faq_open" data-analytics-label="faq_on_site_use">
               <summary>Can crews use it on-site?</summary>
               <p>Yes. The product is built to be simple for field crews to use on the job.</p>
             </details>
 
-            <details>
+            <details data-analytics-event="faq_open" data-analytics-label="faq_export_records">
               <summary>Can I export records for clients or consultants?</summary>
               <p>Yes. PDF export is one of the core workflows in SiteProof.</p>
             </details>
 
-            <details>
+            <details data-analytics-event="faq_open" data-analytics-label="faq_free_trial">
               <summary>Is there a free trial?</summary>
               <p>Yes. There is a 30-day free trial and no credit card is required.</p>
             </details>
 
-            <details>
+            <details data-analytics-event="faq_open" data-analytics-label="faq_enterprise_platform">
               <summary>Is this a full enterprise EHS platform?</summary>
               <p>No. SiteProof is intentionally simple and built for small crews.</p>
             </details>
@@ -236,12 +245,84 @@
     <script>
       const mobileMenuButton = document.querySelector(".mobile-menu-button");
       const mobileNavPanel = document.querySelector(".mobile-nav-panel");
+      const trackedViews = new Set();
+      const trackedScrollMilestones = new Set();
+
+      function trackAnalyticsEvent(eventName, params = {}) {
+        if (typeof window.gtag === "function") {
+          window.gtag("event", eventName, params);
+        }
+      }
+
+      document.querySelectorAll("[data-analytics-event]").forEach((element) => {
+        element.addEventListener("click", () => {
+          trackAnalyticsEvent(element.dataset.analyticsEvent, {
+            event_category: "landing_page",
+            event_label: element.dataset.analyticsLabel || "",
+            link_text: element.textContent.trim(),
+            section: element.closest("[data-track-view]")?.dataset.trackView || "",
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-track-view]").forEach((element) => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const viewName = entry.target.dataset.trackViewName;
+              if (trackedViews.has(viewName)) return;
+              trackedViews.add(viewName);
+              trackAnalyticsEvent(viewName, {
+                event_category: "landing_page",
+                section: entry.target.dataset.trackView,
+              });
+            });
+          },
+          { threshold: 0.45 }
+        );
+
+        observer.observe(element);
+      });
+
+      function trackScrollMilestone() {
+        const scrollableHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollableHeight <= 0) return;
+
+        const scrollPercent = Math.round((window.scrollY / scrollableHeight) * 100);
+        [25, 50, 75, 90].forEach((milestone) => {
+          if (scrollPercent >= milestone && !trackedScrollMilestones.has(milestone)) {
+            trackedScrollMilestones.add(milestone);
+            trackAnalyticsEvent("scroll_depth", {
+              event_category: "landing_page",
+              percent_scrolled: milestone,
+            });
+          }
+        });
+      }
+
+      window.addEventListener("scroll", trackScrollMilestone, { passive: true });
+      trackScrollMilestone();
+
+      document.querySelectorAll(".faq-list details").forEach((detail) => {
+        detail.addEventListener("toggle", () => {
+          if (!detail.open) return;
+          trackAnalyticsEvent(detail.dataset.analyticsEvent, {
+            event_category: "landing_page",
+            event_label: detail.dataset.analyticsLabel || "",
+          });
+        });
+      });
 
       if (mobileMenuButton && mobileNavPanel) {
         mobileMenuButton.addEventListener("click", () => {
           const isOpen = mobileMenuButton.getAttribute("aria-expanded") === "true";
           mobileMenuButton.setAttribute("aria-expanded", String(!isOpen));
           mobileNavPanel.hidden = isOpen;
+          trackAnalyticsEvent(isOpen ? "mobile_menu_close" : "mobile_menu_open", {
+            event_category: "landing_page",
+          });
         });
 
         mobileNavPanel.querySelectorAll("a").forEach((link) => {
