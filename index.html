@@ -36,12 +36,12 @@
   <body>
     <header class="site-header">
       <div class="container header-row">
-        <div class="brand">
-          <div class="brand-mark">SP</div>
+        <a class="brand" href="index.html" aria-label="SiteProof home">
+          <img class="brand-mark" src="assets/LogoSVG.svg" alt="SiteProof logo" />
           <div>
             <div class="brand-name">SiteProof</div>
           </div>
-        </div>
+        </a>
         <div class="mobile-header-actions">
           <a class="mobile-pricing-link" href="pricing.html" data-analytics-event="nav_click" data-analytics-label="mobile_pricing_link">Pricing</a>
           <button
@@ -174,16 +174,6 @@
             </div>
           </div>
 
-          <div class="pricing-preview-card" data-track-view="pricing_preview" data-track-view-name="pricing_preview_view">
-            <div class="eyebrow" style="color: var(--accent-dark); background: #fff2e5; border-color: #f3cfac;">Pricing</div>
-            <h3>See plans built for small crews.</h3>
-            <p>
-              View Starter and Pro pricing, compare what fits your team, and
-              choose the right free trial path.
-            </p>
-            <a class="button" href="pricing.html" data-analytics-event="cta_click" data-analytics-label="pricing_preview_view_plans">View pricing</a>
-          </div>
-
           <div id="faq" class="faq-list" data-track-view="faq" data-track-view-name="faq_view">
             <details data-analytics-event="faq_open" data-analytics-label="faq_ontario_contractors">
               <summary>Is this built for Ontario contractors?</summary>
@@ -219,10 +209,42 @@
       </section>
 
     </main>
+    <div class="contact-modal" data-contact-modal hidden>
+      <div class="contact-modal-backdrop" data-contact-close></div>
+      <div
+        class="contact-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contact-modal-title"
+      >
+        <button class="contact-modal-close" type="button" aria-label="Close support popup" data-contact-close>
+          ×
+        </button>
+        <h2 id="contact-modal-title">Contact support</h2>
+        <p>
+          This is our support email for pricing and rollout questions:
+          <strong>support@siteproof.ca</strong>
+        </p>
+        <p>
+          Tell us about your crew size or rollout needs and we’ll help with the
+          right setup.
+        </p>
+        <a
+          class="button"
+          href="mailto:support@siteproof.ca?subject=SiteProof%20Custom%20Pricing"
+          data-analytics-event="cta_click"
+          data-analytics-label="pricing_contact_support_email"
+        >
+          Email support@siteproof.ca
+        </a>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="container site-footer-inner">
         <div>© 2026 SiteProof</div>
         <div class="site-footer-links">
+          <button class="footer-support-link" type="button" data-contact-open data-analytics-event="cta_click" data-analytics-label="footer_contact_support">Contact support</button>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms &amp; Conditions</a>
         </div>
@@ -231,6 +253,9 @@
     <script>
       const mobileMenuButton = document.querySelector(".mobile-menu-button");
       const mobileNavPanel = document.querySelector(".mobile-nav-panel");
+      const contactOpenButtons = document.querySelectorAll("[data-contact-open]");
+      const contactModal = document.querySelector("[data-contact-modal]");
+      const contactCloseButtons = document.querySelectorAll("[data-contact-close]");
       const trackedViews = new Set();
       const trackedScrollMilestones = new Set();
 
@@ -290,6 +315,32 @@
 
       window.addEventListener("scroll", trackScrollMilestone, { passive: true });
       trackScrollMilestone();
+
+      function setContactModalState(isOpen) {
+        if (!contactModal) return;
+        contactModal.hidden = !isOpen;
+        document.body.classList.toggle("modal-open", isOpen);
+      }
+
+      if (contactOpenButtons.length && contactModal) {
+        contactOpenButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setContactModalState(true);
+          });
+        });
+
+        contactCloseButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setContactModalState(false);
+          });
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !contactModal.hidden) {
+            setContactModalState(false);
+          }
+        });
+      }
 
       document.querySelectorAll(".faq-list details").forEach((detail) => {
         detail.addEventListener("toggle", () => {

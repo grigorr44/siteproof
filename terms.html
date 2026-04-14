@@ -36,8 +36,8 @@
   <body>
     <header class="site-header">
       <div class="container header-row">
-        <a class="brand" href="index.html">
-          <div class="brand-mark">SP</div>
+        <a class="brand" href="index.html" aria-label="SiteProof home">
+          <img class="brand-mark" src="assets/LogoSVG.svg" alt="SiteProof logo" />
           <div>
             <div class="brand-name">SiteProof</div>
           </div>
@@ -197,10 +197,42 @@
       </section>
     </main>
 
+    <div class="contact-modal" data-contact-modal hidden>
+      <div class="contact-modal-backdrop" data-contact-close></div>
+      <div
+        class="contact-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contact-modal-title"
+      >
+        <button class="contact-modal-close" type="button" aria-label="Close support popup" data-contact-close>
+          ×
+        </button>
+        <h2 id="contact-modal-title">Contact support</h2>
+        <p>
+          This is our support email for pricing and rollout questions:
+          <strong>support@siteproof.ca</strong>
+        </p>
+        <p>
+          Tell us about your crew size or rollout needs and we’ll help with the
+          right setup.
+        </p>
+        <a
+          class="button"
+          href="mailto:support@siteproof.ca?subject=SiteProof%20Custom%20Pricing"
+          data-analytics-event="cta_click"
+          data-analytics-label="pricing_contact_support_email"
+        >
+          Email support@siteproof.ca
+        </a>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="container site-footer-inner">
         <div>© 2026 SiteProof</div>
         <div class="site-footer-links">
+          <button class="footer-support-link" type="button" data-contact-open data-analytics-event="cta_click" data-analytics-label="footer_contact_support">Contact support</button>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms &amp; Conditions</a>
         </div>
@@ -210,6 +242,9 @@
     <script>
       const mobileMenuButton = document.querySelector(".mobile-menu-button");
       const mobileNavPanel = document.querySelector(".mobile-nav-panel");
+      const contactOpenButtons = document.querySelectorAll("[data-contact-open]");
+      const contactModal = document.querySelector("[data-contact-modal]");
+      const contactCloseButtons = document.querySelectorAll("[data-contact-close]");
       const trackedViews = new Set();
 
       function trackAnalyticsEvent(eventName, params = {}) {
@@ -247,6 +282,32 @@
 
         observer.observe(element);
       });
+
+      function setContactModalState(isOpen) {
+        if (!contactModal) return;
+        contactModal.hidden = !isOpen;
+        document.body.classList.toggle("modal-open", isOpen);
+      }
+
+      if (contactOpenButtons.length && contactModal) {
+        contactOpenButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setContactModalState(true);
+          });
+        });
+
+        contactCloseButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setContactModalState(false);
+          });
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !contactModal.hidden) {
+            setContactModalState(false);
+          }
+        });
+      }
 
       if (mobileMenuButton && mobileNavPanel) {
         mobileMenuButton.addEventListener("click", () => {

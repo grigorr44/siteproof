@@ -36,12 +36,12 @@
   <body>
     <header class="site-header">
       <div class="container header-row">
-        <div class="brand">
-          <div class="brand-mark">SP</div>
+        <a class="brand" href="index.html" aria-label="SiteProof home">
+          <img class="brand-mark" src="assets/LogoSVG.svg" alt="SiteProof logo" />
           <div>
             <div class="brand-name">SiteProof</div>
           </div>
-        </div>
+        </a>
         <div class="mobile-header-actions">
           <a class="mobile-pricing-link" href="pricing.html" data-analytics-event="nav_click" data-analytics-label="mobile_pricing_link">Pricing</a>
           <button
@@ -78,36 +78,22 @@
       <section class="page-hero" data-track-view="pricing_page_hero" data-track-view-name="pricing_page_hero_view">
         <div class="container">
           <div class="page-hero-card">
-            <div class="eyebrow">SiteProof Pricing</div>
-            <h1>Simple plans for Ontario crews that need proof fast.</h1>
+            <h1>Simple pricing for every crew.</h1>
             <p>
-              Start with a 30-day free trial, compare Starter and Pro, and pick
-              the plan that fits your team size and workload.
+              Start with a 30-day free trial and choose the plan that fits your
+              crew size.
             </p>
-            <div class="hero-actions">
-              <a class="button" href="#plans" data-analytics-event="cta_click" data-analytics-label="pricing_page_compare_plans">Compare plans</a>
-              <a class="button-secondary page-secondary-link" href="index.html" data-analytics-event="nav_click" data-analytics-label="pricing_page_back_home">Back to homepage</a>
-            </div>
           </div>
         </div>
       </section>
 
       <section id="plans" class="content pricing-page-content" data-track-view="pricing" data-track-view-name="pricing_view">
         <div class="container">
-          <div class="content-head pricing-page-head">
-            <h2>Clear pricing. No bloated setup.</h2>
-            <p>
-              Built for small contractors and field crews that want simple
-              records, fast exports, and less admin overhead.
-            </p>
-          </div>
-
           <div class="pricing">
-            <div class="pricing-card" data-track-view="pricing_starter" data-track-view-name="pricing_starter_view">
-              <div class="eyebrow" style="color: var(--accent-dark); background: #fff2e5; border-color: #f3cfac;">Starter</div>
-              <h3>Simple pricing for small crews</h3>
-              <div class="price">CAD $79 <small>/ month</small></div>
-              <p>Up to 10 workers</p>
+            <div class="pricing-card pricing-card-featured" data-track-view="pricing_starter" data-track-view-name="pricing_starter_view">
+              <h3>Everything your crew needs to stay proof-ready.</h3>
+              <div class="price">$8 <small>/ user / month</small></div>
+              <p>Simple pricing that grows with your crew size.</p>
               <ul>
                 <li>Daily inspection</li>
                 <li>Toolbox talk log</li>
@@ -115,47 +101,123 @@
                 <li>PDF export</li>
                 <li>Simple dashboard</li>
               </ul>
-              <a class="button" href="mailto:hello@siteproof.ca?subject=SiteProof%20Starter%20Free%20Trial" data-analytics-event="cta_click" data-analytics-label="pricing_starter_start_free">Start free for 30 days</a>
-            </div>
-
-            <div class="pricing-card pricing-card-featured" data-track-view="pricing_pro" data-track-view-name="pricing_pro_view">
-              <div class="eyebrow" style="color: var(--accent-dark); background: #fff2e5; border-color: #f3cfac;">Pro</div>
-              <h3>More room for growing teams</h3>
-              <div class="price">CAD $149 <small>/ month</small></div>
-              <p>Up to 25 workers</p>
-              <ul>
-                <li>Everything in Starter</li>
-                <li>Built for active small crews</li>
-                <li>Clearer office visibility</li>
-                <li>Fast PDF proof export</li>
-                <li>30-day free trial</li>
-              </ul>
-              <a class="button" href="mailto:hello@siteproof.ca?subject=SiteProof%20Pro%20Demo" data-analytics-event="cta_click" data-analytics-label="pricing_pro_book_demo">Book a demo</a>
+              <a class="button" href="mailto:hello@siteproof.ca?subject=SiteProof%20Free%20Trial" data-analytics-event="cta_click" data-analytics-label="pricing_starter_start_free">Start free for 30 days</a>
             </div>
           </div>
+          <p class="pricing-note">
+            Need pricing for a bigger crew or a custom rollout?
+            <button
+              class="pricing-note-button"
+              type="button"
+              data-contact-open
+              data-analytics-event="cta_click"
+              data-analytics-label="pricing_contact_support_open"
+            >
+              Contact us
+            </button>
+          </p>
 
-          <div class="pricing-support-grid" data-track-view="pricing_support" data-track-view-name="pricing_support_view">
-            <div class="simple-card">
-              <h3>30-day free trial</h3>
-              <p>Give SiteProof a real field test before you commit.</p>
+          <section class="early-access-section" data-track-view="early_access" data-track-view-name="early_access_view">
+            <div class="early-access-copy">
+              <div class="early-access-badge">Early supporter offer</div>
+              <h2>Register now and get 50% off your SiteProof subscription.</h2>
+              <p>
+                Join the early list now and your company can lock in 50% off
+                SiteProof pricing when you activate. It is a simple way to get
+                proof-ready records for your crew at an early supporter rate.
+              </p>
+              <p class="early-access-note">
+                No spam. Just launch updates, onboarding details, and your early
+                supporter discount.
+              </p>
+              <div class="early-access-tags">
+                <span>50% off when you join early</span>
+                <span>Priority onboarding access</span>
+                <span>Early access to new features</span>
+              </div>
             </div>
-            <div class="simple-card">
-              <h3>Built for small crews</h3>
-              <p>Designed for owner-operators, supervisors, and small teams.</p>
-            </div>
-            <div class="simple-card">
-              <h3>Need a walkthrough?</h3>
-              <p>If you want help choosing a plan, book a demo and we’ll walk you through it.</p>
-            </div>
-          </div>
+
+            <form class="early-access-card" data-early-access-form>
+              <div class="early-access-card-label">Get on the list</div>
+              <input
+                class="early-access-input"
+                type="text"
+                name="company_name"
+                placeholder="Company name"
+                required
+              />
+              <input
+                class="early-access-input"
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
+              <select class="early-access-select" name="team_size" required>
+                <option value="">Select team size</option>
+                <option value="1-5 workers">1-5 workers</option>
+                <option value="6-10 workers">6-10 workers</option>
+                <option value="11-25 workers">11-25 workers</option>
+                <option value="26+ workers">26+ workers</option>
+              </select>
+              <p class="early-access-disclaimer">
+                We’ll only email you about launch updates, early access, and
+                onboarding.
+              </p>
+              <button
+                class="button early-access-button"
+                type="submit"
+                data-analytics-event="cta_click"
+                data-analytics-label="pricing_early_access_submit"
+              >
+                Join early access
+              </button>
+              <p class="early-access-footnote">
+                You’ll be first to hear when SiteProof opens and how to claim
+                your 50% early supporter discount.
+              </p>
+            </form>
+          </section>
         </div>
       </section>
     </main>
+
+    <div class="contact-modal" data-contact-modal hidden>
+      <div class="contact-modal-backdrop" data-contact-close></div>
+      <div
+        class="contact-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contact-modal-title"
+      >
+        <button class="contact-modal-close" type="button" aria-label="Close support popup" data-contact-close>
+          ×
+        </button>
+        <h2 id="contact-modal-title">Contact support</h2>
+        <p>
+          This is our support email for pricing and rollout questions:
+          <strong>support@siteproof.ca</strong>
+        </p>
+        <p>
+          Tell us about your crew size or rollout needs and we’ll help with the
+          right setup.
+        </p>
+        <a
+          class="button"
+          href="mailto:support@siteproof.ca?subject=SiteProof%20Custom%20Pricing"
+          data-analytics-event="cta_click"
+          data-analytics-label="pricing_contact_support_email"
+        >
+          Email support@siteproof.ca
+        </a>
+      </div>
+    </div>
 
     <footer class="site-footer">
       <div class="container site-footer-inner">
         <div>© 2026 SiteProof</div>
         <div class="site-footer-links">
+          <button class="footer-support-link" type="button" data-contact-open data-analytics-event="cta_click" data-analytics-label="footer_contact_support">Contact support</button>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms &amp; Conditions</a>
         </div>
@@ -165,6 +227,10 @@
     <script>
       const mobileMenuButton = document.querySelector(".mobile-menu-button");
       const mobileNavPanel = document.querySelector(".mobile-nav-panel");
+      const contactOpenButtons = document.querySelectorAll("[data-contact-open]");
+      const contactModal = document.querySelector("[data-contact-modal]");
+      const contactCloseButtons = document.querySelectorAll("[data-contact-close]");
+      const earlyAccessForm = document.querySelector("[data-early-access-form]");
       const trackedViews = new Set();
       const trackedScrollMilestones = new Set();
 
@@ -224,6 +290,52 @@
 
       window.addEventListener("scroll", trackScrollMilestone, { passive: true });
       trackScrollMilestone();
+
+      function setContactModalState(isOpen) {
+        if (!contactModal) return;
+        contactModal.hidden = !isOpen;
+        document.body.classList.toggle("modal-open", isOpen);
+      }
+
+      if (contactOpenButtons.length && contactModal) {
+        contactOpenButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setContactModalState(true);
+          });
+        });
+
+        contactCloseButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setContactModalState(false);
+          });
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !contactModal.hidden) {
+            setContactModalState(false);
+          }
+        });
+      }
+
+      if (earlyAccessForm) {
+        earlyAccessForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const formData = new FormData(earlyAccessForm);
+          const companyName = String(formData.get("company_name") || "").trim();
+          const email = String(formData.get("email") || "").trim();
+          const teamSize = String(formData.get("team_size") || "").trim();
+          const subject = "SiteProof Early Access";
+          const body = [
+            "I want to join the SiteProof early access list and claim the 50% early supporter discount.",
+            "",
+            `Company name: ${companyName}`,
+            `Email: ${email}`,
+            `Team size: ${teamSize}`,
+          ].join("\n");
+
+          window.location.href = `mailto:support@siteproof.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+      }
 
       if (mobileMenuButton && mobileNavPanel) {
         mobileMenuButton.addEventListener("click", () => {
