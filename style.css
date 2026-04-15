@@ -227,9 +227,14 @@ h3 {
 }
 
 .hero-note {
-  margin-top: 12px;
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 14px;
+  margin: 5px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 6px;
+  line-height: 1.2;
+}
+
+.hero-note span {
+  display: inline;
 }
 
 .section {
@@ -1200,6 +1205,39 @@ h3 {
     border-radius: 24px;
   }
 
+  .content {
+    padding: 48px 0 60px;
+  }
+
+  .content-head .eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .content-head h2 {
+    margin-top: 0;
+  }
+
+  .content-head p {
+    margin-top: 12px;
+  }
+
+  .use-cases-layout {
+    gap: 14px;
+  }
+
+  .use-cases-points {
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .simple-card {
+    padding: 16px 18px;
+  }
+
+  .simple-card p {
+    margin-top: 8px;
+  }
+
   .feature-modal-panel {
     padding: 24px 20px 22px;
     border-radius: 22px;
@@ -1253,6 +1291,11 @@ h3 {
 
   .hero-actions {
     margin-top: 20px;
+  }
+
+  .hero-note {
+    margin-top: 5px;
+    font-size: 6px;
   }
 
   .button,
