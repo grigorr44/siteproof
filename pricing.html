@@ -57,8 +57,8 @@
           </button>
         </div>
         <nav class="nav">
-          <a href="index.html#use-cases" data-analytics-event="nav_click" data-analytics-label="desktop_use_cases">Use cases</a>
           <a href="index.html#features" data-analytics-event="nav_click" data-analytics-label="desktop_features">Features</a>
+          <a href="index.html#use-cases" data-analytics-event="nav_click" data-analytics-label="desktop_use_cases">Use cases</a>
           <a href="pricing.html" data-analytics-event="nav_click" data-analytics-label="desktop_pricing">Pricing</a>
           <a href="index.html#faq" data-analytics-event="nav_click" data-analytics-label="desktop_faq">FAQ</a>
           <a class="button" href="#plans" data-analytics-event="cta_click" data-analytics-label="desktop_pricing_free_trial">Pricing &amp; free trial</a>
@@ -66,8 +66,8 @@
       </div>
       <div class="container">
         <div class="mobile-nav-panel" id="mobile-nav-panel" hidden>
-          <a href="index.html#use-cases" data-analytics-event="nav_click" data-analytics-label="mobile_menu_use_cases">Use cases</a>
           <a href="index.html#features" data-analytics-event="nav_click" data-analytics-label="mobile_menu_features">Features</a>
+          <a href="index.html#use-cases" data-analytics-event="nav_click" data-analytics-label="mobile_menu_use_cases">Use cases</a>
           <a href="index.html#faq" data-analytics-event="nav_click" data-analytics-label="mobile_menu_faq">FAQ</a>
           <a class="button" href="#plans" data-analytics-event="cta_click" data-analytics-label="mobile_menu_pricing_free_trial">Pricing &amp; free trial</a>
         </div>
@@ -119,26 +119,32 @@
 
           <section class="early-access-section" data-track-view="early_access" data-track-view-name="early_access_view">
             <div class="early-access-copy">
-              <div class="early-access-badge">Early supporter offer</div>
-              <h2>Register now and get 50% off your SiteProof subscription.</h2>
+              <div class="early-access-badge">Waitlist offer</div>
+              <h2>Join the SiteProof waitlist and get 50% off when we launch.</h2>
               <p>
-                Join the early list now and your company can lock in 50% off
-                SiteProof pricing when you activate. It is a simple way to get
-                proof-ready records for your crew at an early supporter rate.
+                SiteProof is launching soon. If you join the waitlist now, your
+                company can lock in a 50% early supporter discount when your
+                account is invited to activate.
               </p>
               <p class="early-access-note">
-                No spam. Just launch updates, onboarding details, and your early
-                supporter discount.
+                No spam. Just waitlist updates, launch timing, and details on
+                how to claim your early supporter pricing.
               </p>
-              <div class="early-access-tags">
-                <span>50% off when you join early</span>
-                <span>Priority onboarding access</span>
-                <span>Early access to new features</span>
-              </div>
+              <ul class="early-access-tags">
+                <li>50% off if you join the waitlist now</li>
+                <li>Priority access when SiteProof opens</li>
+                <li>Early access to new features</li>
+              </ul>
             </div>
 
-            <form class="early-access-card" data-early-access-form>
-              <div class="early-access-card-label">Get on the list</div>
+            <form
+              class="early-access-card"
+              action="https://formspree.io/f/mwvapzwj"
+              method="POST"
+            >
+              <div class="early-access-card-label">Join the waitlist</div>
+              <input type="hidden" name="_subject" value="SiteProof Waitlist" />
+              <input type="hidden" name="offer" value="50% early supporter discount" />
               <input
                 class="early-access-input"
                 type="text"
@@ -161,7 +167,7 @@
                 <option value="26+ workers">26+ workers</option>
               </select>
               <p class="early-access-disclaimer">
-                We’ll only email you about launch updates, early access, and
+                We’ll only email you about waitlist updates, launch timing, and
                 onboarding.
               </p>
               <button
@@ -170,11 +176,11 @@
                 data-analytics-event="cta_click"
                 data-analytics-label="pricing_early_access_submit"
               >
-                Join early access
+                Join the waitlist
               </button>
               <p class="early-access-footnote">
-                You’ll be first to hear when SiteProof opens and how to claim
-                your 50% early supporter discount.
+                You’ll be first to hear when SiteProof is ready and how to
+                activate your 50% waitlist discount.
               </p>
             </form>
           </section>
@@ -230,7 +236,6 @@
       const contactOpenButtons = document.querySelectorAll("[data-contact-open]");
       const contactModal = document.querySelector("[data-contact-modal]");
       const contactCloseButtons = document.querySelectorAll("[data-contact-close]");
-      const earlyAccessForm = document.querySelector("[data-early-access-form]");
       const trackedViews = new Set();
       const trackedScrollMilestones = new Set();
 
@@ -314,26 +319,6 @@
           if (event.key === "Escape" && !contactModal.hidden) {
             setContactModalState(false);
           }
-        });
-      }
-
-      if (earlyAccessForm) {
-        earlyAccessForm.addEventListener("submit", (event) => {
-          event.preventDefault();
-          const formData = new FormData(earlyAccessForm);
-          const companyName = String(formData.get("company_name") || "").trim();
-          const email = String(formData.get("email") || "").trim();
-          const teamSize = String(formData.get("team_size") || "").trim();
-          const subject = "SiteProof Early Access";
-          const body = [
-            "I want to join the SiteProof early access list and claim the 50% early supporter discount.",
-            "",
-            `Company name: ${companyName}`,
-            `Email: ${email}`,
-            `Team size: ${teamSize}`,
-          ].join("\n");
-
-          window.location.href = `mailto:support@siteproof.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         });
       }
 

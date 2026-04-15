@@ -36,7 +36,7 @@
   <body>
     <header class="site-header">
       <div class="container header-row">
-        <a class="brand" href="index.html" aria-label="SiteProof home">
+        <a class="brand" href="index.html" aria-label="SiteProof home" data-analytics-event="nav_click" data-analytics-label="brand_home">
           <img class="brand-mark" src="assets/LogoSVG.svg" alt="SiteProof logo" />
           <div>
             <div class="brand-name">SiteProof</div>
@@ -57,8 +57,8 @@
           </button>
         </div>
         <nav class="nav">
-          <a href="#use-cases" data-analytics-event="nav_click" data-analytics-label="desktop_use_cases">Use cases</a>
           <a href="#features" data-analytics-event="nav_click" data-analytics-label="desktop_features">Features</a>
+          <a href="#use-cases" data-analytics-event="nav_click" data-analytics-label="desktop_use_cases">Use cases</a>
           <a href="pricing.html" data-analytics-event="nav_click" data-analytics-label="desktop_pricing">Pricing</a>
           <a href="#faq" data-analytics-event="nav_click" data-analytics-label="desktop_faq">FAQ</a>
           <a class="button" href="pricing.html" data-analytics-event="cta_click" data-analytics-label="desktop_pricing_free_trial">Pricing &amp; free trial</a>
@@ -66,8 +66,8 @@
       </div>
       <div class="container">
         <div class="mobile-nav-panel" id="mobile-nav-panel" hidden>
-          <a href="#use-cases" data-analytics-event="nav_click" data-analytics-label="mobile_menu_use_cases">Use cases</a>
           <a href="#features" data-analytics-event="nav_click" data-analytics-label="mobile_menu_features">Features</a>
+          <a href="#use-cases" data-analytics-event="nav_click" data-analytics-label="mobile_menu_use_cases">Use cases</a>
           <a href="#faq" data-analytics-event="nav_click" data-analytics-label="mobile_menu_faq">FAQ</a>
           <a class="button" href="pricing.html" data-analytics-event="cta_click" data-analytics-label="mobile_menu_pricing_free_trial">Pricing &amp; free trial</a>
         </div>
@@ -95,7 +95,7 @@
       <section id="features" class="section tiles-wrap" data-track-view="features" data-track-view-name="features_view">
         <div class="container tiles-shell">
           <div class="tiles-grid">
-            <div class="tile">
+            <div class="tile" data-feature="inspection" role="button" tabindex="0" aria-haspopup="dialog">
               <div class="tile-icon" aria-hidden="true">
                 <img src="assets/FeaturesIcons/Slice%201.svg" alt="" />
               </div>
@@ -103,7 +103,7 @@
               <p>Keep jobsite inspections organized by day and project.</p>
             </div>
 
-            <div class="tile">
+            <div class="tile" data-feature="toolbox" role="button" tabindex="0" aria-haspopup="dialog">
               <div class="tile-icon" aria-hidden="true">
                 <img src="assets/FeaturesIcons/Slice%202.svg" alt="" />
               </div>
@@ -111,7 +111,7 @@
               <p>Record talks clearly without chasing paper later.</p>
             </div>
 
-            <div class="tile">
+            <div class="tile" data-feature="training" role="button" tabindex="0" aria-haspopup="dialog">
               <div class="tile-icon" aria-hidden="true">
                 <img src="assets/FeaturesIcons/Slice%203.svg" alt="" />
               </div>
@@ -119,7 +119,7 @@
               <p>See expiring training before it becomes a site problem.</p>
             </div>
 
-            <div class="tile">
+            <div class="tile" data-feature="pdf" role="button" tabindex="0" aria-haspopup="dialog">
               <div class="tile-icon" aria-hidden="true">
                 <img src="assets/FeaturesIcons/Slice%204.svg" alt="" />
               </div>
@@ -127,7 +127,7 @@
               <p>Send a clean PDF packet when proof is requested.</p>
             </div>
 
-            <div class="tile">
+            <div class="tile" data-feature="dashboard" role="button" tabindex="0" aria-haspopup="dialog">
               <div class="tile-icon" aria-hidden="true">
                 <img src="assets/FeaturesIcons/Slice%205.svg" alt="" />
               </div>
@@ -240,13 +240,35 @@
       </div>
     </div>
 
+    <div class="feature-modal" data-feature-modal hidden>
+      <div class="feature-modal-backdrop" data-feature-close></div>
+      <div
+        class="feature-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="feature-modal-title"
+      >
+        <button class="feature-modal-close" type="button" aria-label="Close feature details" data-feature-close>
+          ×
+        </button>
+        <div class="feature-modal-eyebrow">Feature details</div>
+        <h2 id="feature-modal-title"></h2>
+        <p class="feature-modal-summary" data-feature-summary></p>
+        <ul class="feature-modal-list" data-feature-list></ul>
+        <div class="feature-modal-why">
+          <h3>Why it matters</h3>
+          <p data-feature-why></p>
+        </div>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="container site-footer-inner">
         <div>© 2026 SiteProof</div>
         <div class="site-footer-links">
           <button class="footer-support-link" type="button" data-contact-open data-analytics-event="cta_click" data-analytics-label="footer_contact_support">Contact support</button>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="privacy.html" data-analytics-event="nav_click" data-analytics-label="footer_privacy_policy">Privacy Policy</a>
+          <a href="terms.html" data-analytics-event="nav_click" data-analytics-label="footer_terms_conditions">Terms &amp; Conditions</a>
         </div>
       </div>
     </footer>
@@ -256,8 +278,81 @@
       const contactOpenButtons = document.querySelectorAll("[data-contact-open]");
       const contactModal = document.querySelector("[data-contact-modal]");
       const contactCloseButtons = document.querySelectorAll("[data-contact-close]");
+      const featureTiles = document.querySelectorAll(".tile[data-feature]");
+      const featureModal = document.querySelector("[data-feature-modal]");
+      const featureCloseButtons = document.querySelectorAll("[data-feature-close]");
+      const featureModalTitle = document.getElementById("feature-modal-title");
+      const featureModalSummary = document.querySelector("[data-feature-summary]");
+      const featureModalList = document.querySelector("[data-feature-list]");
+      const featureModalWhy = document.querySelector("[data-feature-why]");
       const trackedViews = new Set();
       const trackedScrollMilestones = new Set();
+      let activeFeatureTile = null;
+
+      const featureContent = {
+        inspection: {
+          title: "Daily inspection",
+          summary: "Log jobsite inspections in seconds, even without internet.",
+          details: [
+            "Create daily inspection forms directly on-site",
+            "Works offline with no connection required",
+            "Automatically syncs when back online",
+            "Add photos with timestamp and context",
+            "Select project, date, and inspector quickly",
+            "Access all past inspections anytime",
+          ],
+          why: "Crews can complete inspections anywhere without worrying about signal.",
+        },
+        toolbox: {
+          title: "Toolbox talk log",
+          summary: "Record safety talks instantly, with or without connection.",
+          details: [
+            "Log toolbox talks in under a minute",
+            "Works offline on job sites with poor signal",
+            "Syncs automatically once connected",
+            "Add topic, notes, and attendees quickly",
+            "Attach photos or supporting info",
+            "Keep talks organized by date and project",
+          ],
+          why: "No missed records, even on remote sites.",
+        },
+        training: {
+          title: "Training expiry tracker",
+          summary: "Stay ahead of expiring certifications with a simple, clear view.",
+          details: [
+            "Track worker certifications and expiry dates",
+            "See upcoming expirations in one place",
+            "Highlight expired or missing training",
+            "Maintain a centralized training list",
+            "Access records anytime after sync",
+          ],
+          why: "Avoid last-minute compliance issues and delays.",
+        },
+        pdf: {
+          title: "PDF export",
+          summary: "Generate a clean compliance packet instantly when proof is requested.",
+          details: [
+            "Export inspections, talks, hazards, and training into one PDF",
+            "Automatically organized by project and date",
+            "Generate professional, client-ready documents",
+            "Share with clients, consultants, or GCs quickly",
+            "No manual compiling required",
+          ],
+          why: "When someone asks for proof, you are ready in minutes.",
+        },
+        dashboard: {
+          title: "Simple dashboard",
+          summary: "See what is missing and what is ready without digging.",
+          details: [
+            "View missing inspections or incomplete records",
+            "See expiring training at a glance",
+            "Track recent activity across projects",
+            "Access and export documents quickly",
+            "Data updates after offline sync",
+          ],
+          why: "Stay in control without complex systems or spreadsheets.",
+        },
+      };
 
       function trackAnalyticsEvent(eventName, params = {}) {
         if (typeof window.gtag === "function") {
@@ -319,7 +414,37 @@
       function setContactModalState(isOpen) {
         if (!contactModal) return;
         contactModal.hidden = !isOpen;
-        document.body.classList.toggle("modal-open", isOpen);
+        document.body.classList.toggle(
+          "modal-open",
+          isOpen || (featureModal && !featureModal.hidden)
+        );
+      }
+
+      function setFeatureModalState(isOpen) {
+        if (!featureModal) return;
+        featureModal.hidden = !isOpen;
+        document.body.classList.toggle(
+          "modal-open",
+          isOpen || (contactModal && !contactModal.hidden)
+        );
+        if (!isOpen && activeFeatureTile) {
+          activeFeatureTile.classList.remove("tile-active");
+          activeFeatureTile = null;
+        }
+      }
+
+      function renderFeatureModal(featureKey) {
+        const feature = featureContent[featureKey];
+        if (!feature || !featureModalTitle || !featureModalSummary || !featureModalList || !featureModalWhy) {
+          return;
+        }
+
+        featureModalTitle.textContent = feature.title;
+        featureModalSummary.textContent = feature.summary;
+        featureModalWhy.textContent = feature.why;
+        featureModalList.innerHTML = feature.details
+          .map((detail) => `<li>${detail}</li>`)
+          .join("");
       }
 
       if (contactOpenButtons.length && contactModal) {
@@ -331,13 +456,71 @@
 
         contactCloseButtons.forEach((button) => {
           button.addEventListener("click", () => {
+            trackAnalyticsEvent("contact_modal_close", {
+              event_category: "landing_page",
+              close_method: button.classList.contains("contact-modal-close") ? "button" : "backdrop",
+            });
             setContactModalState(false);
           });
         });
 
         document.addEventListener("keydown", (event) => {
           if (event.key === "Escape" && !contactModal.hidden) {
+            trackAnalyticsEvent("contact_modal_close", {
+              event_category: "landing_page",
+              close_method: "escape",
+            });
             setContactModalState(false);
+          }
+        });
+      }
+
+      if (featureTiles.length && featureModal) {
+        featureTiles.forEach((tile) => {
+          const openFeatureModal = () => {
+            const featureKey = tile.dataset.feature;
+            if (!featureKey) return;
+            if (activeFeatureTile) {
+              activeFeatureTile.classList.remove("tile-active");
+            }
+            activeFeatureTile = tile;
+            tile.classList.add("tile-active");
+            renderFeatureModal(featureKey);
+            setFeatureModalState(true);
+            trackAnalyticsEvent("feature_modal_open", {
+              event_category: "landing_page",
+              feature: featureKey,
+            });
+          };
+
+          tile.addEventListener("click", openFeatureModal);
+          tile.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openFeatureModal();
+            }
+          });
+        });
+
+        featureCloseButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            trackAnalyticsEvent("feature_modal_close", {
+              event_category: "landing_page",
+              feature: activeFeatureTile?.dataset.feature || "",
+              close_method: button.classList.contains("feature-modal-close") ? "button" : "backdrop",
+            });
+            setFeatureModalState(false);
+          });
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !featureModal.hidden) {
+            trackAnalyticsEvent("feature_modal_close", {
+              event_category: "landing_page",
+              feature: activeFeatureTile?.dataset.feature || "",
+              close_method: "escape",
+            });
+            setFeatureModalState(false);
           }
         });
       }
