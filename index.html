@@ -58,7 +58,7 @@
         </div>
         <nav class="nav">
           <a href="#features" data-analytics-event="nav_click" data-analytics-label="desktop_features">Features</a>
-          <a href="#use-cases" data-analytics-event="nav_click" data-analytics-label="desktop_use_cases">Use cases</a>
+          <a href="#proof-scenario" data-analytics-event="nav_click" data-analytics-label="desktop_use_cases">Use cases</a>
           <a href="pricing.html" data-analytics-event="nav_click" data-analytics-label="desktop_pricing">Pricing</a>
           <a href="#faq" data-analytics-event="nav_click" data-analytics-label="desktop_faq">FAQ</a>
           <a class="button" href="pricing.html" data-analytics-event="cta_click" data-analytics-label="desktop_pricing_free_trial">Pricing &amp; free trial</a>
@@ -67,7 +67,7 @@
       <div class="container">
         <div class="mobile-nav-panel" id="mobile-nav-panel" hidden>
           <a href="#features" data-analytics-event="nav_click" data-analytics-label="mobile_menu_features">Features</a>
-          <a href="#use-cases" data-analytics-event="nav_click" data-analytics-label="mobile_menu_use_cases">Use cases</a>
+          <a href="#proof-scenario" data-analytics-event="nav_click" data-analytics-label="mobile_menu_use_cases">Use cases</a>
           <a href="#faq" data-analytics-event="nav_click" data-analytics-label="mobile_menu_faq">FAQ</a>
           <a class="button" href="pricing.html" data-analytics-event="cta_click" data-analytics-label="mobile_menu_pricing_free_trial">Pricing &amp; free trial</a>
         </div>
@@ -133,6 +133,51 @@
               </div>
               <h3>Simple dashboard</h3>
               <p>See what is missing and what is ready to export.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="proof-scenario"
+        class="section proof-scenario-wrap"
+        data-track-view="proof_scenario"
+        data-track-view-name="proof_scenario_view"
+      >
+        <div class="container">
+          <div class="proof-scenario">
+            <div class="proof-scenario-head">
+              <div class="eyebrow">Proof ready</div>
+              <h2>When someone asks for records, you can send them fast.</h2>
+              <p>
+                Turn a last-minute client, consultant, or GC request into a
+                clean PDF in a few quick steps.
+              </p>
+            </div>
+            <div class="proof-scenario-flow" aria-label="How SiteProof helps crews send proof fast">
+              <div class="proof-step">
+                <span class="proof-step-number">1</span>
+                <h3>Client asks</h3>
+                <p>Safety records are requested on short notice.</p>
+              </div>
+              <div class="proof-arrow" aria-hidden="true">&rarr;</div>
+              <div class="proof-step">
+                <span class="proof-step-number">2</span>
+                <h3>Open SiteProof</h3>
+                <p>Find the project records already organized by date.</p>
+              </div>
+              <div class="proof-arrow" aria-hidden="true">&rarr;</div>
+              <div class="proof-step">
+                <span class="proof-step-number">3</span>
+                <h3>Export PDF</h3>
+                <p>Generate a client-ready packet without manual compiling.</p>
+              </div>
+              <div class="proof-arrow" aria-hidden="true">&rarr;</div>
+              <div class="proof-step">
+                <span class="proof-step-number">4</span>
+                <h3>Send in minutes</h3>
+                <p>Share proof fast instead of chasing paper or spreadsheets.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -505,10 +550,10 @@
         featureCloseButtons.forEach((button) => {
           button.addEventListener("click", () => {
             trackAnalyticsEvent("feature_modal_close", {
-              event_category: "landing_page",
-              feature: activeFeatureTile?.dataset.feature || "",
-              close_method: button.classList.contains("feature-modal-close") ? "button" : "backdrop",
-            });
+                event_category: "landing_page",
+                feature: activeFeatureTile?.dataset.feature || "",
+                close_method: button.classList.contains("feature-modal-close") ? "button" : "backdrop",
+              });
             setFeatureModalState(false);
           });
         });
@@ -516,10 +561,10 @@
         document.addEventListener("keydown", (event) => {
           if (event.key === "Escape" && !featureModal.hidden) {
             trackAnalyticsEvent("feature_modal_close", {
-              event_category: "landing_page",
-              feature: activeFeatureTile?.dataset.feature || "",
-              close_method: "escape",
-            });
+                event_category: "landing_page",
+                feature: activeFeatureTile?.dataset.feature || "",
+                close_method: "escape",
+              });
             setFeatureModalState(false);
           }
         });

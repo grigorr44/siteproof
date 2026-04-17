@@ -226,19 +226,95 @@ h3 {
   margin-top: 36px;
 }
 
-.hero-note {
-  margin: 5px 0 0;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 6px;
-  line-height: 1.2;
-}
-
-.hero-note span {
-  display: inline;
-}
-
 .section {
   padding: 26px 0 0;
+}
+
+.proof-scenario-wrap {
+  margin-top: 6px;
+}
+
+.proof-scenario {
+  display: grid;
+  gap: 24px;
+  padding: 30px 32px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #fffdf9 0%, #f8f2e8 100%);
+  border: 1px solid rgba(31, 42, 55, 0.06);
+  box-shadow: 0 18px 40px rgba(31, 42, 55, 0.05);
+}
+
+.proof-scenario-head {
+  max-width: 780px;
+}
+
+.proof-scenario-head .eyebrow {
+  color: var(--accent-dark);
+  background: #fff2e5;
+  border-color: #f3cfac;
+}
+
+.proof-scenario-head p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.proof-scenario-flow {
+  display: grid;
+  grid-template-columns:
+    minmax(190px, 1fr) 40px
+    minmax(190px, 1fr) 40px
+    minmax(190px, 1fr) 40px
+    minmax(190px, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+
+.proof-step {
+  min-height: 100%;
+  padding: 20px 18px;
+  border-radius: 22px;
+  background: var(--surface);
+  border: 1px solid rgba(31, 42, 55, 0.08);
+  box-shadow: 0 8px 24px rgba(31, 42, 55, 0.05);
+}
+
+.proof-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #fff2e5;
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.proof-step h3 {
+  margin-top: 14px;
+  font-size: 17px;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.proof-step p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.proof-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: 800;
+  opacity: 0.95;
 }
 
 .tiles-wrap {
@@ -965,6 +1041,7 @@ h3 {
   .use-cases-layout,
   .three-grid,
   .pricing,
+  .proof-scenario-flow,
   .early-access-section {
     grid-template-columns: 1fr;
   }
@@ -989,8 +1066,23 @@ h3 {
   .hero-copy p,
   .content-head p,
   .page-hero-card p,
+  .proof-scenario-head p,
   .early-access-copy p {
     font-size: 18px;
+  }
+
+  .proof-scenario {
+    padding: 24px;
+  }
+
+  .proof-scenario-flow {
+    gap: 10px;
+    grid-template-columns: 1fr;
+  }
+
+  .proof-arrow {
+    transform: rotate(90deg);
+    min-height: 18px;
   }
 
   .legal-shell {
@@ -1209,6 +1301,27 @@ h3 {
     padding: 48px 0 60px;
   }
 
+  .proof-scenario {
+    gap: 18px;
+    padding: 20px 18px;
+    border-radius: 24px;
+  }
+
+  .proof-scenario-head p {
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .proof-step {
+    padding: 16px 15px;
+    border-radius: 18px;
+  }
+
+  .proof-step h3 {
+    font-size: 17px;
+  }
+
   .content-head .eyebrow {
     margin-bottom: 10px;
   }
@@ -1291,11 +1404,6 @@ h3 {
 
   .hero-actions {
     margin-top: 20px;
-  }
-
-  .hero-note {
-    margin-top: 5px;
-    font-size: 6px;
   }
 
   .button,
